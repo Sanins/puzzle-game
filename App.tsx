@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import HomeScreen from './Screens/HomeScreen/HomeScreen';
-import ProfileScreen from './Screens/ProfileScreen/ProfileScreen';
+import HomeScreen from './src/Screens/HomeScreen/HomeScreen';
+import ProfileScreen from './src/Screens/ProfileScreen/ProfileScreen';
+import DragScreen from './src/Screens/DragScreen/DragScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const app = () => {
           options={{ title: 'Welcome' }}
         />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Drag" component={DragScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
