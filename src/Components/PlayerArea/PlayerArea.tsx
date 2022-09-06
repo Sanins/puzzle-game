@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, Text } from 'react-native';
 import { DraxView } from 'react-native-drax';
 

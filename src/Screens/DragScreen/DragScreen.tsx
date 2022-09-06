@@ -18,30 +18,32 @@ const DragScreen = ({ navigation, route }) => {
       style={gestureRootViewStyle}>
       <DraxProvider>
         <View style={styles.container}>
-          <View>
-            <Text>Player</Text>
-          </View>
-          <Button 
-            onPress={(): void => {
-                setTileList(listOfTiles);
-                setPlayerOnesCards(player1Cards);
+          <View style={styles.playerArea}>
+            <View>
+              <Text>Player</Text>
+            </View>
+            <Button 
+              onPress={(): void => {
+                  setTileList(listOfTiles);
+                  setPlayerOnesCards(player1Cards);
+                }
               }
-            }
-            title="reset"
-            color="#841584"
-            accessibilityLabel="Learn more about this purple button"
-          />
-          <View style={styles.receivingContainer}>
-          {tileList.map((item, index) => (
-						<TileComponent 
-              item={item}
-              index={index}
-              onPlayerCardChange={value => setPlayerOnesCards(value)}
-              onTileListChange={value => setTileList(value)}
-              playerCards={playerOnesCards} 
-              tileList={tileList} 
+              title="reset"
+              color="#841584"
+              accessibilityLabel="Learn more about this purple button"
             />
-					))}
+          </View>
+          <View style={styles.receivingContainer}>
+            {tileList.map((item, index) => (
+              <TileComponent 
+                item={item}
+                index={index}
+                onPlayerCardChange={value => setPlayerOnesCards(value)}
+                onTileListChange={value => setTileList(value)}
+                playerCards={playerOnesCards} 
+                tileList={tileList} 
+              />
+            ))}
           </View>
           <View style={styles.draxListContainer}>
             <DraxList
@@ -69,16 +71,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 12,
-    paddingTop: 40,
     justifyContent: 'space-evenly',
   },
+  playerArea: {
+    paddingBottom: 10,
+  },
   receivingContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly'
+    flexDirection: "row",
+    flexWrap: 'wrap',
   },
   draxListContainer: {
     padding: 5,
-    height: 200
   },
 });
 
