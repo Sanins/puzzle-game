@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Dimensions, StyleSheet, Text } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { DraxView } from 'react-native-drax';
 
 type PlayerAreaProps = {
@@ -12,32 +13,38 @@ const PlayerArea: React.FC<PlayerAreaProps> = ({
 	index,
 }) => {
 
+    // const [lala, setLala] = useState(item);
+
+    // useEffect(() => {
+    //     setLala(item)
+    //   }, [item])
+
+    //   console.log('item', item);
+
     return (
-      <DraxView
-        style={[styles.centeredContent, styles.draggableBox, { backgroundColor: item.background_color }]}
-        draggingStyle={styles.dragging}
-        dragReleasedStyle={styles.dragging}
-        hoverDraggingStyle={styles.hoverDragging}
-        dragPayload={index}
-        longPressDelay={150}
-        key={index}
-      >
-        <Text style={styles.textStyle}>{item.name}</Text>
-      </DraxView>
+        <View style={styles.draxListContainer}>
+            <DraxView
+                style={[styles.draggableBox, { backgroundColor: item.background_color }]}
+                draggingStyle={styles.dragging}
+                dragReleasedStyle={styles.dragging}
+                hoverDraggingStyle={styles.hoverDragging}
+                dragPayload={index}
+                longPressDelay={150}
+                key={index}
+            >
+                <Text style={styles.textStyle}>{item.name}</Text>
+            </DraxView>
+        </View>
     );
   }
 
   const styles = StyleSheet.create({
-    centeredContent: {
-      borderRadius: 10,
+    draxListContainer: {
+        flexDirection: 'column', 
     },
     draggableBox: {
-      width: (Dimensions.get('window').width / 4) - 12,
-      height: (Dimensions.get('window').width / 4) - 12,
-      borderRadius: 10,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginRight: 5
+        width: (Dimensions.get('window').width / 5) - 5,
+        height: (Dimensions.get('window').width / 5) - 5,
     },
     dragging: {
       opacity: 0.2,
@@ -47,6 +54,7 @@ const PlayerArea: React.FC<PlayerAreaProps> = ({
       borderWidth: 2,
     },
     textStyle: {
+    
       fontSize: 18
     },
   });

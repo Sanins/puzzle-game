@@ -9,15 +9,19 @@ type TileComponentProps = {
   tileList: any;
   onPlayerCardChange: any;
   onTileListChange: any;
+  onPlayerTurnChange: any;
+  playerTurn: any;
 };
 
 const TileComponent: React.FC<TileComponentProps> = ({
-	item,
-	index,
-    playerCards,
-    tileList,
-    onPlayerCardChange,
-    onTileListChange,
+  item,
+  index,
+  playerCards,
+  tileList,
+  onPlayerCardChange,
+  onTileListChange,
+  onPlayerTurnChange,
+  playerTurn,
 }) => {
     return (
       <View style={styles.poop}>
@@ -38,8 +42,9 @@ const TileComponent: React.FC<TileComponentProps> = ({
             let selectedItem = playerCards[event.dragged.payload];
             let updatedTileList = [...tileList];
 
-            console.log('updatedTileList[index]', updatedTileList[index]);
-            console.log('selectedItem', selectedItem);
+            if (updatedTileList[index].id) {
+              return
+            }
 
             updatedTileList[index] = selectedItem;
 
@@ -49,6 +54,7 @@ const TileComponent: React.FC<TileComponentProps> = ({
             updatedPlayersCards = updatedPlayersCards.filter(item => item.id !== selectedItem.id);
 
             onPlayerCardChange(updatedPlayersCards);
+            onPlayerTurnChange(!playerTurn);
           }}
         />
       </View>

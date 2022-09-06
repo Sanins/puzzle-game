@@ -23,59 +23,95 @@ export const player1Cards = [
       "name": "C",
       "background_color": "orange"
     },
+    {
+      "id": 13,
+      "tile": 0,
+      "name": "D",
+      "background_color": "purple"
+    },
+    {
+      "id": 14,
+      "tile": 0,
+      "name": "E",
+      "background_color": "green"
+    },
+  ];
+
+  export const player2Cards = [
+    {
+      "id": 15,
+      "tile": 0,
+      "name": "F",
+      "background_color": "red"
+    },
+    {
+      "id": 16,
+      "tile": 0,
+      "name": "G",
+      "background_color": "pink"
+    },
+    {
+      "id": 17,
+      "tile": 0,
+      "name": "H",
+      "background_color": "orange"
+    },
+    {
+      "id": 18,
+      "tile": 0,
+      "name": "I",
+      "background_color": "purple"
+    },
+    {
+      "id": 19,
+      "tile": 0,
+      "name": "J",
+      "background_color": "green"
+    },
   ];
 
 export const listOfTiles = [
     {
-      "id": 1,
       "tile": 1,
       "name": "",
       "background_color": "blue"
     },
     {
-      "id": 2,
       "tile": 2,
       "name": "",
       "background_color": "blue"
     },
     {
-      "id": 3,
       "tile": 3,
       "name": "",
       "background_color": "blue"
     },
     {
-      "id": 4,
       "tile": 4,
       "name": "",
       "background_color": "blue"
     },
     {
-      "id": 5,
       "tile": 5,
       "name": "",
       "background_color": "blue"
     },
     {
-      "id": 6,
       "tile": 6,
       "name": "",
       "background_color": "blue"
     },
     {
-      "id": 7,
       "tile": 7,
       "name": "",
       "background_color": "blue"
     },
     {
-      "id": 8,
       "tile": 8,
       "name": "",
       "background_color": "blue"
     },
     {
-      "id": 9,
       "tile": 9,
       "name": "",
       "background_color": "blue"

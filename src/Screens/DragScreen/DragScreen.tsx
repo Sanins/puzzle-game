@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Dimensions, StyleSheet, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { DraxProvider, DraxList } from 'react-native-drax';
 import { FlatListItemSeparator } from '../../Components/FlatListItemSeparator/FlatListItemSeparator';
-import { listOfTiles, player1Cards } from '../../utils/utils';
+import { listOfTiles, player1Cards, player2Cards } from '../../utils/utils';
 import TileComponent from '../../Components/TileComponent/TileComponent';
 import PlayerArea from '../../Components/PlayerArea/PlayerArea';
 
@@ -12,6 +12,8 @@ const gestureRootViewStyle = { flex: 1 };
 const DragScreen = ({ navigation, route }) => {
   const [tileList, setTileList] = React.useState(listOfTiles);
   const [playerOnesCards, setPlayerOnesCards] = React.useState(player1Cards);
+  const [playerTwosCards, setPlayerTwosCards] = React.useState(player2Cards);
+  const [playerTurn, setPlayerTurn] = React.useState(true);
 
   return (
     <GestureHandlerRootView
@@ -20,12 +22,13 @@ const DragScreen = ({ navigation, route }) => {
         <View style={styles.container}>
           <View style={styles.playerArea}>
             <View>
-              <Text>Player</Text>
+              <Text>Player {playerTurn ? 1 : 2}</Text>
             </View>
             <Button 
               onPress={(): void => {
                   setTileList(listOfTiles);
                   setPlayerOnesCards(player1Cards);
+                  setPlayerTwosCards(player2Cards)
                 }
               }
               title="reset"
@@ -38,16 +41,18 @@ const DragScreen = ({ navigation, route }) => {
               <TileComponent 
                 item={item}
                 index={index}
-                onPlayerCardChange={value => setPlayerOnesCards(value)}
+                onPlayerCardChange={value => playerTurn ? setPlayerOnesCards(value): setPlayerTwosCards(value)}
                 onTileListChange={value => setTileList(value)}
-                playerCards={playerOnesCards} 
+                onPlayerTurnChange={value => setPlayerTurn(value)}
+                playerTurn={playerTurn}
+                playerCards={playerTurn ? playerOnesCards: playerTwosCards} 
                 tileList={tileList} 
               />
             ))}
           </View>
-          <View style={styles.draxListContainer}>
+          <View>
             <DraxList
-              data={playerOnesCards}
+              data={playerTurn ? playerOnesCards : playerTwosCards}
               renderItemContent={({ item, index }) => {
                 return (
                   <>
@@ -56,7 +61,7 @@ const DragScreen = ({ navigation, route }) => {
                 );
               }}
               keyExtractor={(item, index) => index.toString()}
-              numColumns={4}
+              numColumns={5}
               ItemSeparatorComponent={FlatListItemSeparator}
               scrollEnabled={true}
             />
@@ -79,9 +84,6 @@ const styles = StyleSheet.create({
   receivingContainer: {
     flexDirection: "row",
     flexWrap: 'wrap',
-  },
-  draxListContainer: {
-    padding: 5,
   },
 });
 
