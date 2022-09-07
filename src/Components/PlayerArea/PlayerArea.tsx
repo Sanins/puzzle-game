@@ -13,14 +13,6 @@ const PlayerArea: React.FC<PlayerAreaProps> = ({
 	index,
 }) => {
 
-    // const [lala, setLala] = useState(item);
-
-    // useEffect(() => {
-    //     setLala(item)
-    //   }, [item])
-
-    //   console.log('item', item);
-
     return (
         <View style={styles.draxListContainer}>
             <DraxView

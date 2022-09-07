@@ -7,30 +7,35 @@ export const isEven = (n: number): boolean => {
 export const player1Cards = [
     {
       "id": 10,
+      "player": 1,
       "tile": 0,
       "name": "A",
       "background_color": "red"
     },
     {
       "id": 11,
+      "player": 1,
       "tile": 0,
       "name": "B",
       "background_color": "pink"
     },
     {
       "id": 12,
+      "player": 1,
       "tile": 0,
       "name": "C",
       "background_color": "orange"
     },
     {
       "id": 13,
+      "player": 1,
       "tile": 0,
       "name": "D",
       "background_color": "purple"
     },
     {
       "id": 14,
+      "player": 1,
       "tile": 0,
       "name": "E",
       "background_color": "green"
@@ -40,30 +45,35 @@ export const player1Cards = [
   export const player2Cards = [
     {
       "id": 15,
+      "player": 2,
       "tile": 0,
       "name": "F",
       "background_color": "red"
     },
     {
       "id": 16,
+      "player": 2,
       "tile": 0,
       "name": "G",
       "background_color": "pink"
     },
     {
       "id": 17,
+      "player": 2,
       "tile": 0,
       "name": "H",
       "background_color": "orange"
     },
     {
       "id": 18,
+      "player": 2,
       "tile": 0,
       "name": "I",
       "background_color": "purple"
     },
     {
       "id": 19,
+      "player": 2,
       "tile": 0,
       "name": "J",
       "background_color": "green"

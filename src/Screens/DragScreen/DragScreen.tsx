@@ -6,6 +6,7 @@ import { FlatListItemSeparator } from '../../Components/FlatListItemSeparator/Fl
 import { listOfTiles, player1Cards, player2Cards } from '../../utils/utils';
 import TileComponent from '../../Components/TileComponent/TileComponent';
 import PlayerArea from '../../Components/PlayerArea/PlayerArea';
+import { useEffect } from 'react';
 
 const gestureRootViewStyle = { flex: 1 };
 
@@ -13,7 +14,22 @@ const DragScreen = ({ navigation, route }) => {
   const [tileList, setTileList] = React.useState(listOfTiles);
   const [playerOnesCards, setPlayerOnesCards] = React.useState(player1Cards);
   const [playerTwosCards, setPlayerTwosCards] = React.useState(player2Cards);
+  const [winner, setWinner] = React.useState('');
   const [playerTurn, setPlayerTurn] = React.useState(true);
+
+  useEffect(() => {
+    const endGameScore = tileList.every(element => element['player'] === 1 || element['player'] === 2);
+
+    if (endGameScore) {
+      let playerOneScore = 0;
+
+      tileList.filter((element) => {
+        element.player === 1 && playerOneScore++
+      });
+  
+      playerOneScore >= 5 ? setWinner('Winner player 1') : setWinner('Winner player 2')
+    }
+  });
 
   return (
     <GestureHandlerRootView
@@ -23,12 +39,14 @@ const DragScreen = ({ navigation, route }) => {
           <View style={styles.playerArea}>
             <View>
               <Text>Player {playerTurn ? 1 : 2}</Text>
+              <Text>{winner}</Text>
             </View>
             <Button 
               onPress={(): void => {
                   setTileList(listOfTiles);
                   setPlayerOnesCards(player1Cards);
                   setPlayerTwosCards(player2Cards)
+                  setWinner('');
                 }
               }
               title="reset"
