@@ -10,35 +10,70 @@ export const player1Cards = [
       "player": 1,
       "tile": 0,
       "name": "A",
-      "background_color": "red"
+      "background_color": "red",
+      "ability": {
+        "top": 2,
+        "bottom": 4,
+        "right": 3,
+        "left": 5,
+        "power": 50
+      }
     },
     {
       "id": 11,
       "player": 1,
       "tile": 0,
       "name": "B",
-      "background_color": "pink"
+      "background_color": "pink",
+      "ability": {
+        "top": 3,
+        "bottom": 5,
+        "right": 1,
+        "left": 2,
+        "power": 50
+      }
     },
     {
       "id": 12,
       "player": 1,
       "tile": 0,
       "name": "C",
-      "background_color": "orange"
+      "background_color": "orange",
+      "ability": {
+        "top": 5,
+        "bottom": 2,
+        "right": 3,
+        "left": 4,
+        "power": 50
+      }
     },
     {
       "id": 13,
       "player": 1,
       "tile": 0,
       "name": "D",
-      "background_color": "purple"
+      "background_color": "purple",
+      "ability": {
+        "top": 1,
+        "bottom": 3,
+        "right": 4,
+        "left": 5,
+        "power": 50
+      }
     },
     {
       "id": 14,
       "player": 1,
       "tile": 0,
       "name": "E",
-      "background_color": "green"
+      "background_color": "green",
+      "ability": {
+        "top": 2,
+        "bottom": 4,
+        "right": 5,
+        "left": 2,
+        "power": 50
+      }
     },
   ];
 
@@ -48,39 +83,79 @@ export const player1Cards = [
       "player": 2,
       "tile": 0,
       "name": "F",
-      "background_color": "red"
+      "background_color": "red",
+      "ability": {
+        "top": 1,
+        "bottom": 5,
+        "right": 1,
+        "left": 3,
+        "power": 50
+      }
     },
     {
       "id": 16,
       "player": 2,
       "tile": 0,
       "name": "G",
-      "background_color": "pink"
+      "background_color": "pink",
+      "ability": {
+        "top": 5,
+        "bottom": 1,
+        "right": 5,
+        "left": 1,
+        "power": 50
+      }
     },
     {
       "id": 17,
       "player": 2,
       "tile": 0,
       "name": "H",
-      "background_color": "orange"
+      "background_color": "orange",
+      "ability": {
+        "top": 4,
+        "bottom": 5,
+        "right": 1,
+        "left": 2,
+        "power": 50
+      }
     },
     {
       "id": 18,
       "player": 2,
       "tile": 0,
       "name": "I",
-      "background_color": "purple"
+      "background_color": "purple",
+      "ability": {
+        "top": 3,
+        "bottom": 5,
+        "right": 5,
+        "left": 5,
+        "power": 50
+      }
     },
     {
       "id": 19,
       "player": 2,
       "tile": 0,
       "name": "J",
-      "background_color": "green"
+      "background_color": "green",
+      "ability": {
+        "top": 3,
+        "bottom": 5,
+        "right": 4,
+        "left": 4,
+        "power": 50
+      }
     },
   ];
 
 export const listOfTiles = [
+    {
+      "tile": 0,
+      "name": "",
+      "background_color": "blue"
+    },
     {
       "tile": 1,
       "name": "",
@@ -118,11 +193,6 @@ export const listOfTiles = [
     },
     {
       "tile": 8,
-      "name": "",
-      "background_color": "blue"
-    },
-    {
-      "tile": 9,
       "name": "",
       "background_color": "blue"
     },

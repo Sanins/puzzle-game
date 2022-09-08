@@ -7,6 +7,8 @@ import { listOfTiles, player1Cards, player2Cards } from '../../utils/utils';
 import TileComponent from '../../Components/TileComponent/TileComponent';
 import PlayerArea from '../../Components/PlayerArea/PlayerArea';
 import { useEffect } from 'react';
+import ResultModal from '../../Components/ResultModal/ResultModal';
+import CoinFlipModal from '../../Components/CoinFlipModal/CoinFlipModal';
 
 const gestureRootViewStyle = { flex: 1 };
 
@@ -14,6 +16,8 @@ const DragScreen = ({ navigation, route }) => {
   const [tileList, setTileList] = React.useState(listOfTiles);
   const [playerOnesCards, setPlayerOnesCards] = React.useState(player1Cards);
   const [playerTwosCards, setPlayerTwosCards] = React.useState(player2Cards);
+  const [showResultModal, setShowResultModal] = React.useState(false);
+  const [showCoinFlip, setShowCoinFlip] = React.useState(true);
   const [winner, setWinner] = React.useState('');
   const [playerTurn, setPlayerTurn] = React.useState(true);
 
@@ -27,7 +31,8 @@ const DragScreen = ({ navigation, route }) => {
         element.player === 1 && playerOneScore++
       });
   
-      playerOneScore >= 5 ? setWinner('Winner player 1') : setWinner('Winner player 2')
+      playerOneScore >= 5 ? setWinner('Winner player 1') : setWinner('Winner player 2');
+      setShowResultModal(true);
     }
   });
 
@@ -39,7 +44,8 @@ const DragScreen = ({ navigation, route }) => {
           <View style={styles.playerArea}>
             <View>
               <Text>Player {playerTurn ? 1 : 2}</Text>
-              <Text>{winner}</Text>
+              <CoinFlipModal showModal={showCoinFlip} onPlayerTurnChange={value => setPlayerTurn(value)} />
+              <ResultModal showModal={showResultModal} winningText={winner} />
             </View>
             <Button 
               onPress={(): void => {

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, Text, Dimensions, StyleSheet } from 'react-native';
 import { DraxView } from 'react-native-drax';
+import CardStrength from '../CardStrength/CardStrength';
 
 type TileComponentProps = {
 	item: any;
@@ -23,10 +24,18 @@ const TileComponent: React.FC<TileComponentProps> = ({
   onPlayerTurnChange,
   playerTurn,
 }) => {
+    let backgroundColor = 'green';
+
+    if (item.player === 1) {
+      backgroundColor = 'blue';
+    } else if (item.player === 2) {
+      backgroundColor = 'red';
+    }
+
     return (
       <View style={styles.poop}>
         <DraxView
-          style={[{ backgroundColor: item.background_color }]}
+          style={[{ backgroundColor: backgroundColor }]}
           receivingStyle={styles.receiving}
           renderContent={({ viewState }) => {
             // const receivingDrag = viewState && viewState.receivingDrag;
@@ -34,6 +43,9 @@ const TileComponent: React.FC<TileComponentProps> = ({
             return (
               <View style={styles.receivingZone}>
                 <Text style={styles.textStyle}>{item.name}</Text>
+                {item.ability && (
+                  <CardStrength ability={item.ability} />
+                )}
               </View>
             );
           }}
@@ -41,12 +53,48 @@ const TileComponent: React.FC<TileComponentProps> = ({
           onReceiveDragDrop={(event) => {
             let selectedItem = playerCards[event.dragged.payload];
             let updatedTileList = [...tileList];
+            selectedItem.tile = index;
 
             if (updatedTileList[index].id) {
               return
             }
 
             updatedTileList[index] = selectedItem;
+
+            console.log('updatedTileList', updatedTileList);
+
+            switch (index) {
+              case 0:
+                console.log('topLeft');
+                break;
+              case 1:
+                console.log('topMiddle');
+                break;
+              case 2:
+                console.log('topRight');
+                break;
+              case 3:
+                console.log('middleLeft');
+                break;
+              case 4:
+                console.log('middle');
+                break;
+              case 5:
+                console.log('middleRight');
+                break;
+              case 6:
+                console.log('bottomLeft');
+                break;
+              case 7:
+                console.log('bottomMiddle');
+                break;
+              case 8:
+                console.log('bottomRight');
+                break;
+
+              default:
+                break;
+            }
 
             onTileListChange(updatedTileList);
 

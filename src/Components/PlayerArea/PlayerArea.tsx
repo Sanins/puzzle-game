@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import { DraxView } from 'react-native-drax';
+import CardStrength from '../CardStrength/CardStrength';
 
 type PlayerAreaProps = {
 	item: any;
@@ -25,6 +25,9 @@ const PlayerArea: React.FC<PlayerAreaProps> = ({
                 key={index}
             >
                 <Text style={styles.textStyle}>{item.name}</Text>
+                {item.ability && (
+                    <CardStrength ability={item.ability} />
+                )}
             </DraxView>
         </View>
     );
@@ -36,7 +39,7 @@ const PlayerArea: React.FC<PlayerAreaProps> = ({
     },
     draggableBox: {
         width: (Dimensions.get('window').width / 5) - 5,
-        height: (Dimensions.get('window').width / 5) - 5,
+        height: 80,
     },
     dragging: {
       opacity: 0.2,
