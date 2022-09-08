@@ -157,7 +157,7 @@ const TileComponent: React.FC<TileComponentProps> = ({
                   selectedItem.player, 
                   updatedTileList,
                   [
-                    {tile: 5, location: 'top'},
+                    {tile: 4, location: 'top'},
                     {tile: 6, location: 'left'},
                     {tile: 8, location: 'right'}
                   ]
