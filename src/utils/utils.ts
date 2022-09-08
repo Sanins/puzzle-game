@@ -33,8 +33,19 @@ export const updateTileListAccordingToStrength = (
     }
 
     let listOfWins = [];
+  
     rivalTiles.map((item) => {
-      if (currentTileAbility[item.location] > item.ability[item.location]) {
+      let oppositeSide;
+      if (item.location === 'left') {
+        oppositeSide = 'right';
+      } else if (item.location === 'right') {
+        oppositeSide = 'left';
+      } else if (item.location === 'top') {
+        oppositeSide = 'bottom';
+      } else if (item.location === 'bottom') {
+        oppositeSide = 'top';
+      }
+      if (currentTileAbility[item.location] > item.ability[oppositeSide]) {
         listOfWins.push(item.tile);
       }
     });
@@ -54,7 +65,7 @@ export const player1Cards = [
       "player": 1,
       "tile": 0,
       "name": "A",
-      "background_color": "red",
+      "background_color": "blue",
       "ability": {
         "top": 2,
         "bottom": 4,
@@ -68,7 +79,7 @@ export const player1Cards = [
       "player": 1,
       "tile": 0,
       "name": "B",
-      "background_color": "pink",
+      "background_color": "blue",
       "ability": {
         "top": 3,
         "bottom": 5,
@@ -82,7 +93,7 @@ export const player1Cards = [
       "player": 1,
       "tile": 0,
       "name": "C",
-      "background_color": "orange",
+      "background_color": "blue",
       "ability": {
         "top": 5,
         "bottom": 2,
@@ -96,7 +107,7 @@ export const player1Cards = [
       "player": 1,
       "tile": 0,
       "name": "D",
-      "background_color": "purple",
+      "background_color": "blue",
       "ability": {
         "top": 1,
         "bottom": 3,
@@ -110,7 +121,7 @@ export const player1Cards = [
       "player": 1,
       "tile": 0,
       "name": "E",
-      "background_color": "green",
+      "background_color": "blue",
       "ability": {
         "top": 2,
         "bottom": 4,
@@ -141,7 +152,7 @@ export const player1Cards = [
       "player": 2,
       "tile": 0,
       "name": "G",
-      "background_color": "pink",
+      "background_color": "red",
       "ability": {
         "top": 5,
         "bottom": 1,
@@ -155,7 +166,7 @@ export const player1Cards = [
       "player": 2,
       "tile": 0,
       "name": "H",
-      "background_color": "orange",
+      "background_color": "red",
       "ability": {
         "top": 4,
         "bottom": 5,
@@ -169,7 +180,7 @@ export const player1Cards = [
       "player": 2,
       "tile": 0,
       "name": "I",
-      "background_color": "purple",
+      "background_color": "red",
       "ability": {
         "top": 3,
         "bottom": 5,
@@ -183,7 +194,7 @@ export const player1Cards = [
       "player": 2,
       "tile": 0,
       "name": "J",
-      "background_color": "green",
+      "background_color": "red",
       "ability": {
         "top": 3,
         "bottom": 5,
@@ -198,46 +209,46 @@ export const listOfTiles = [
     {
       "tile": 0,
       "name": "",
-      "background_color": "blue"
+      "background_color": "green"
     },
     {
       "tile": 1,
       "name": "",
-      "background_color": "blue"
+      "background_color": "green"
     },
     {
       "tile": 2,
       "name": "",
-      "background_color": "blue"
+      "background_color": "green"
     },
     {
       "tile": 3,
       "name": "",
-      "background_color": "blue"
+      "background_color": "green"
     },
     {
       "tile": 4,
       "name": "",
-      "background_color": "blue"
+      "background_color": "green"
     },
     {
       "tile": 5,
       "name": "",
-      "background_color": "blue"
+      "background_color": "green"
     },
     {
       "tile": 6,
       "name": "",
-      "background_color": "blue"
+      "background_color": "green"
     },
     {
       "tile": 7,
       "name": "",
-      "background_color": "blue"
+      "background_color": "green"
     },
     {
       "tile": 8,
       "name": "",
-      "background_color": "blue"
+      "background_color": "green"
     },
   ];

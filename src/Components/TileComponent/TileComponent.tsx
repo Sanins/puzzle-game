@@ -68,7 +68,10 @@ const TileComponent: React.FC<TileComponentProps> = ({
                   index, 
                   selectedItem.player, 
                   updatedTileList,
-                  [{tile: 1, location: 'left'}, {tile: 3, location: 'top'}]
+                  [
+                    {tile: 1, location: 'left'}, 
+                    {tile: 3, location: 'top'}
+                  ]
                 );
                 break;
               case 1:
