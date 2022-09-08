@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { View, Text, Dimensions, StyleSheet } from 'react-native';
 import { DraxView } from 'react-native-drax';
+import { updateTileListAccordingToStrength } from '../../utils/utils';
 import CardStrength from '../CardStrength/CardStrength';
 
 type TileComponentProps = {
@@ -61,37 +62,117 @@ const TileComponent: React.FC<TileComponentProps> = ({
 
             updatedTileList[index] = selectedItem;
 
-            console.log('updatedTileList', updatedTileList);
-
             switch (index) {
               case 0:
-                console.log('topLeft');
+                updatedTileList = updateTileListAccordingToStrength(
+                  index, 
+                  selectedItem.player, 
+                  updatedTileList,
+                  [{tile: 1, location: 'left'}, {tile: 3, location: 'top'}]
+                );
                 break;
               case 1:
+                updatedTileList = updateTileListAccordingToStrength(
+                  index, 
+                  selectedItem.player, 
+                  updatedTileList,
+                  [
+                    {tile: 0, location: 'left'},
+                    {tile: 2, location: 'right'},
+                    {tile: 4, location: 'bottom'}
+                  ]
+                );
                 console.log('topMiddle');
                 break;
               case 2:
+                updatedTileList = updateTileListAccordingToStrength(
+                  index, 
+                  selectedItem.player, 
+                  updatedTileList,
+                  [
+                    {tile: 1, location: 'left'},
+                    {tile: 5, location: 'bottom'}
+                  ]
+                );
                 console.log('topRight');
                 break;
               case 3:
+                updatedTileList = updateTileListAccordingToStrength(
+                  index, 
+                  selectedItem.player, 
+                  updatedTileList,
+                  [
+                    {tile: 0, location: 'top'},
+                    {tile: 4, location: 'right'},
+                    {tile: 6, location: 'bottom'}
+                  ]
+                );
                 console.log('middleLeft');
                 break;
               case 4:
+                updatedTileList = updateTileListAccordingToStrength(
+                  index, 
+                  selectedItem.player, 
+                  updatedTileList,
+                  [
+                    {tile: 1, location: 'top'},
+                    {tile: 3, location: 'left'},
+                    {tile: 5, location: 'right'},
+                    {tile: 7, location: 'bottom'}
+                  ]
+                );
                 console.log('middle');
                 break;
               case 5:
+                updatedTileList = updateTileListAccordingToStrength(
+                  index, 
+                  selectedItem.player, 
+                  updatedTileList,
+                  [
+                    {tile: 2, location: 'top'},
+                    {tile: 4, location: 'left'},
+                    {tile: 8, location: 'bottom'}
+                  ]
+                );
                 console.log('middleRight');
                 break;
               case 6:
+                updatedTileList = updateTileListAccordingToStrength(
+                  index, 
+                  selectedItem.player, 
+                  updatedTileList,
+                  [
+                    {tile: 3, location: 'top'},
+                    {tile: 7, location: 'right'}
+                  ]
+                );
                 console.log('bottomLeft');
                 break;
               case 7:
+                updatedTileList = updateTileListAccordingToStrength(
+                  index, 
+                  selectedItem.player, 
+                  updatedTileList,
+                  [
+                    {tile: 5, location: 'top'},
+                    {tile: 6, location: 'left'},
+                    {tile: 8, location: 'right'}
+                  ]
+                );
                 console.log('bottomMiddle');
                 break;
               case 8:
+                updatedTileList = updateTileListAccordingToStrength(
+                  index, 
+                  selectedItem.player, 
+                  updatedTileList,
+                  [
+                    {tile: 5, location: 'top'},
+                    {tile: 7, location: 'left'}
+                  ]
+                );
                 console.log('bottomRight');
                 break;
-
               default:
                 break;
             }

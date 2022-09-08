@@ -12,8 +12,8 @@ const CardStrength: React.FC<CardStrengthProps> = ({
       <View>
           <Text style={[styles.textStyle, styles.textCenter]}>{ability.top}</Text>
           <View style={styles.middle}>
-            <Text style={styles.textStyle}>{ability.right}</Text>
             <Text style={styles.textStyle}>{ability.left}</Text>
+            <Text style={styles.textStyle}>{ability.right}</Text>
           </View>
           <Text style={[styles.textStyle, styles.textCenter]}>{ability.bottom}</Text>
       </View>

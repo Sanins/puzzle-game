@@ -4,6 +4,50 @@ export const isEven = (n: number): boolean => {
     return n % 2 == 0;
 }
 
+export const updateTileListAccordingToStrength = (
+  index: number, 
+  currentPlayer: number, 
+  tileList: any,
+  tilesToCheckAgainst: any,
+  ) => {
+    let currentTileAbility = {};
+    let rivalTiles = [];
+
+    tilesToCheckAgainst.map((checkItem) => {
+      tileList.map((item) => {
+        if (item.tile === index) {
+          currentTileAbility = item.ability;
+        }
+        if (item.tile === checkItem.tile && currentPlayer !== item.player && item.ability) {
+          rivalTiles.push({
+            ability: item.ability,
+            tile: checkItem.tile,
+            location: checkItem.location
+          });
+        }
+      });
+    });
+
+    if (!rivalTiles) {
+      return tileList;
+    }
+
+    let listOfWins = [];
+    rivalTiles.map((item) => {
+      if (currentTileAbility[item.location] > item.ability[item.location]) {
+        listOfWins.push(item.tile);
+      }
+    });
+
+    tileList.map((item) => {
+      if (listOfWins.includes(item.tile)) {
+        item.player = currentPlayer;
+      }
+    });
+
+    return tileList
+}
+
 export const player1Cards = [
     {
       "id": 10,
