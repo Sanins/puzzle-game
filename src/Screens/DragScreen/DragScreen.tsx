@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { DraxProvider, DraxList } from 'react-native-drax';
 import { FlatListItemSeparator } from '../../Components/FlatListItemSeparator/FlatListItemSeparator';
@@ -36,56 +36,76 @@ const DragScreen = ({ navigation, route }) => {
     }
   });
 
+  console.log('playerTurn', playerTurn);
+
   return (
     <GestureHandlerRootView
       style={gestureRootViewStyle}>
       <DraxProvider>
         <View style={styles.container}>
-          <View style={styles.playerArea}>
-            <View>
-              <Text>Player {playerTurn ? 1 : 2}</Text>
-              <CoinFlipModal showModal={showCoinFlip} onPlayerTurnChange={value => setPlayerTurn(value)} />
-              <ResultModal showModal={showResultModal} winningText={winner} />
-            </View>
-            <Button 
-              onPress={(): void => {
-                  setTileList(listOfTiles);
-                  setPlayerOnesCards(player1Cards);
-                  setPlayerTwosCards(player2Cards)
-                  setWinner('');
-                }
-              }
-              title="reset"
-              color="#841584"
-              accessibilityLabel="Learn more about this purple button"
-            />
-          </View>
-          <View style={styles.receivingContainer}>
-            {tileList.map((item, index) => (
-              <TileComponent 
-                item={item}
-                index={index}
-                onPlayerCardChange={value => playerTurn ? setPlayerOnesCards(value): setPlayerTwosCards(value)}
-                onTileListChange={value => setTileList(value)}
-                onPlayerTurnChange={value => setPlayerTurn(value)}
-                playerTurn={playerTurn}
-                playerCards={playerTurn ? playerOnesCards: playerTwosCards} 
-                tileList={tileList} 
-              />
-            ))}
-          </View>
           <View>
             <DraxList
-              data={playerTurn ? playerOnesCards : playerTwosCards}
+              data={playerOnesCards}
               renderItemContent={({ item, index }) => {
                 return (
                   <>
-                    <PlayerArea item={item} index={index} />
+                    <PlayerArea playersTurn={playerTurn} item={item} index={index} />
                   </>
                 );
               }}
               keyExtractor={(item, index) => index.toString()}
-              numColumns={5}
+              numColumns={1}
+              ItemSeparatorComponent={FlatListItemSeparator}
+              scrollEnabled={true}
+            />
+          </View>
+          <View style={styles.tileAreaContainer}>
+            <View style={styles.playerArea}>
+              <View>
+                <Text>Player {playerTurn ? 1 : 2}</Text>
+                <CoinFlipModal showModal={showCoinFlip} onPlayerTurnChange={value => setPlayerTurn(value)} />
+                <ResultModal showModal={showResultModal} winningText={winner} />
+              </View>
+              <Button 
+                onPress={(): void => {
+                    setTileList(listOfTiles);
+                    setPlayerOnesCards(player1Cards);
+                    setPlayerTwosCards(player2Cards)
+                    setWinner('');
+                  }
+                }
+                title="reset"
+                color="#841584"
+                accessibilityLabel="Learn more about this purple button"
+              />
+            </View>
+            <View style={styles.receivingContainer}>
+              {tileList.map((item, index) => (
+                <TileComponent 
+                  item={item}
+                  index={index}
+                  onPlayerCardChange={value => playerTurn ? setPlayerOnesCards(value): setPlayerTwosCards(value)}
+                  onTileListChange={value => setTileList(value)}
+                  onPlayerTurnChange={value => setPlayerTurn(value)}
+                  playerTurn={playerTurn}
+                  playerCards={playerTurn ? playerOnesCards: playerTwosCards} 
+                  tileList={tileList} 
+                />
+              ))}
+            </View>
+          </View>
+          <View>
+            <DraxList
+              data={playerTwosCards}
+              renderItemContent={({ item, index }) => {
+                return (
+                  <>
+                    <PlayerArea playersTurn={!playerTurn} item={item} index={index} />
+                  </>
+                );
+              }}
+              keyExtractor={(item, index) => index.toString()}
+              numColumns={1}
               ItemSeparatorComponent={FlatListItemSeparator}
               scrollEnabled={true}
             />
@@ -101,13 +121,22 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 12,
     justifyContent: 'space-evenly',
+    flexDirection: "row",
+  },
+  tileAreaContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   playerArea: {
+    flexDirection: "row",
     paddingBottom: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   receivingContainer: {
     flexDirection: "row",
     flexWrap: 'wrap',
+    width: '50%',
   },
 });
 

@@ -69,7 +69,7 @@ const TileComponent: React.FC<TileComponentProps> = ({
                   selectedItem.player, 
                   updatedTileList,
                   [
-                    {tile: 1, location: 'left'}, 
+                    {tile: 1, location: 'right'}, 
                     {tile: 3, location: 'top'}
                   ]
                 );

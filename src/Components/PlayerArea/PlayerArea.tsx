@@ -1,20 +1,22 @@
 import * as React from 'react';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { DraxView } from 'react-native-drax';
 import CardStrength from '../CardStrength/CardStrength';
 
 type PlayerAreaProps = {
 	item: any;
 	index: any;
+  playersTurn: any;
 };
 
 const PlayerArea: React.FC<PlayerAreaProps> = ({
 	item,
 	index,
+  playersTurn,
 }) => {
-
     return (
-        <View style={styles.draxListContainer}>
+        <View>
             <DraxView
                 style={[styles.draggableBox, { backgroundColor: item.background_color }]}
                 draggingStyle={styles.dragging}
@@ -23,6 +25,7 @@ const PlayerArea: React.FC<PlayerAreaProps> = ({
                 dragPayload={index}
                 longPressDelay={150}
                 key={index}
+                draggable={playersTurn}
             >
                 <Text style={styles.textStyle}>{item.name}</Text>
                 {item.ability && (
@@ -34,22 +37,17 @@ const PlayerArea: React.FC<PlayerAreaProps> = ({
   }
 
   const styles = StyleSheet.create({
-    draxListContainer: {
-        flexDirection: 'column', 
-    },
     draggableBox: {
-        width: (Dimensions.get('window').width / 5) - 5,
-        height: 80,
+        width: 70,
     },
-    dragging: {
-      opacity: 0.2,
-    },
+    // dragging: {
+    //   opacity: 0.2,
+    // },
     hoverDragging: {
       borderColor: 'magenta',
       borderWidth: 2,
     },
     textStyle: {
-    
       fontSize: 18
     },
   });
